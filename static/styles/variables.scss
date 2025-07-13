@@ -1,0 +1,71 @@
+// ------------------------------------
+// COLORS
+// ------------------------------------
+$charcoal-900: #112131;
+$charcoal-800: #1b2b3c;
+$neutral-900: #111827;
+$neutral-800: #1f2937;
+$neutral-700: #374151;
+$neutral-200: #e5e7eb;
+$neutral-100: #f3f4f6;
+$neutral-50:  #f9fafb;
+
+$teal-500: #17C3B2;
+$teal-400: #34e1cd;
+$teal-700: #099a8a;
+
+$brand-teal: $teal-500;
+
+$white: #fff;
+$black: #000;
+
+// ------------------------------------
+// TYPOGRAPHY
+// ------------------------------------
+$font-heading: 'Poppins', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+// ------------------------------------
+// BORDER RADIUS
+// ------------------------------------
+$radius-xl: 1.5rem;
+$radius-3xl: 2rem;
+$radius-full: 999px;
+
+// ------------------------------------
+// SHADOWS
+// ------------------------------------
+$shadow-md: 0 8px 32px rgba(17,33,49,0.16);
+$shadow-lg: 0 16px 48px rgba(17,33,49,0.18);
+
+// ------------------------------------
+// SPACING
+// ------------------------------------
+$space-8: 2rem;     // 32px
+$space-6: 1.5rem;   // 24px
+$space-4: 1rem;     // 16px
+
+// ------------------------------------
+// FONT SIZES
+// ------------------------------------
+$font-xl: 1.25rem;     // 20px
+$font-2xl: 2rem;       // 32px
+$font-3xl: 2.4rem;     // 38.4px
+
+// ------------------------------------
+// EXTRAS (FOR BADGES, BUTTONS, ETC.)
+// ------------------------------------
+$badge-bg: $charcoal-900;
+$badge-color: $teal-500;
+$button-height: 56px;
+$cta-bg: $teal-500;
+$cta-bg-hover: $teal-700;
+$cta-color: $charcoal-900;
+$cta-color-hover: $white;
+
+// ------------------------------------
+// GRID BREAKPOINTS (IF NEEDED)
+// ------------------------------------
+$breakpoint-sm: 600px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1024px;

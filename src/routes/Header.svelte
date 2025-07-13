@@ -1,129 +1,118 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+
+	let mobileOpen = false;
+	const toggleMobile = () => (mobileOpen = !mobileOpen);
+
+	// Navigation items
+	const navItems = [
+		{ label: 'How It Works', href: '/how-it-works' },
+		{ label: 'Story', href: '/story' },
+		{ label: 'FAQ', href: '/faq' },
+		{ label: "Pre-order", href: '/pre-order' },
+		{ label: 'Contact', href: '/contact' },
+		{ label: "Kickstarter", href: 'https://www.kickstarter.com/projects/drnksafe/drinksafe-clip' },
+		{label: "Blog", href: '/blog'}
+	];
+
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+<header class="site-header">
+	<div class="container">
+		<div class="logo">DrnkSafe</div>
+		<nav class="desktop-nav">
+			{#each navItems as item}
+				<a href={item.href}>{item.label}</a>
+			{/each}
+			<a href="#final-cta" class="btn btn--primary">Pre‑order</a>
+		</nav>
+
+		<button class="mobile-toggle" on:click={toggleMobile} aria-label="Toggle navigation">
+			<i class="fa-solid fa-bars"></i>
+		</button>
 	</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+	{#if mobileOpen}
+		<nav class="mobile-nav">
+			{#each navItems as item}
+				<a href={item.href} on:click={() => (mobileOpen = false)}>{item.label}</a>
+			{/each}
+			<a href="#final-cta" class="btn btn--primary mt-2" on:click={() => (mobileOpen = false)}>Pre‑order</a>
+		</nav>
+	{/if}
 </header>
 
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+<style lang="scss">
+/* Utility classes */
+.container {
+	width: 100%;
+	max-width: 72rem;
+	margin-inline: auto;
+	padding-inline: 1rem;
+	display: flex;
+}
 
-	.corner {
-		width: 3em;
-		height: 3em;
+/* Header */
+.site-header {
+	position: sticky;
+	top: 0;
+	background: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+	z-index: 50;
+	.mobile-toggle {
+		display: none;
+		background: none;
+		border: none;
+		font-size: 1.25rem;
+		color: var(--color-base-600);
 	}
-
-	.corner a {
+	.logo {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: var(--color-base-900);
+		margin-right: auto;
+		flex-grow: 1
+	}
+	.desktop-nav {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
+		gap: 2rem;
+		a {
+			color: var(--color-base-600);
+			&:hover {
+				color: var(--color-base-900);
+			}
+		}
 	}
+	@media (max-width: 48rem) {
+		.desktop-nav {
+			display: none;
+		}
+		.mobile-toggle {
+			display: inline-flex;
+		}
+	}
+}
+.mobile-nav {
+	position: absolute;
+	top: 4rem;
+	right: 1rem;
+	background: #fff;
+	border: 1px solid var(--color-base-100);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	width: 12rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	>a {
+		padding: 0.5rem 0.75rem;
+		border-radius: 0.375rem;
+		color: var(--color-base-700);
+		&:hover {
+			background: var(--color-base-50);
+		}
+	}
+}
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
 </style>

@@ -9,5 +9,22 @@ export default defineConfig({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide'
 		})
-	]
+	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: '@import "$styles/variables.scss";',
+
+			}
+		},
+	},
+	resolve: {
+		alias: {
+			'$styles': '/src/lib/styles',
+			'$components': '/src/lib/components',
+			'$stores': '/src/lib/stores',
+			'$utils': '/src/lib/utils',
+			'$routes': '/src/routes'
+		}
+	},
 });
