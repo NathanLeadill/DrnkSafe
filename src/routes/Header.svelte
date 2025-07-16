@@ -9,9 +9,9 @@
 		{ label: 'Story', href: '/story' },
 		{ label: 'FAQ', href: '/faq' },
 		{ label: "Pre-order", href: '/pre-order' },
-		{ label: 'Contact', href: '/contact' },
+		// { label: 'Contact', href: '/contact' },
 		{ label: "Kickstarter", href: 'https://www.kickstarter.com/projects/drnksafe/drinksafe-clip' },
-		{label: "Blog", href: '/blog'}
+		// {label: "Blog", href: '/blog'}
 	];
 
 </script>
