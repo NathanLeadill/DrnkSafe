@@ -43,7 +43,7 @@
 				<h1>Test your drink before it tests you</h1>
 				<p class="lead">Detect spiking drugs in under 15&nbsp;seconds with our pocket‑sized tester. Medical‑grade accuracy you can trust.</p>
 				<a href="#final-cta" class="btn btn--primary btn--lg mb-2">Pre‑order DrnkSafe</a>
-				<p class="meta">Ships Q4&nbsp;2025 • 30‑day money‑back guarantee</p>
+				<p class="meta">Ships Q4&nbsp;2025 • 45‑day money‑back guarantee</p>
 			</div>
 			<div class="hero-media">
 				<div class="placeholder">Product on bar counter mock‑up</div>
